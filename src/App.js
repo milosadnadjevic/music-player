@@ -3,17 +3,24 @@ import Song from "./components/Song";
 import './styles/app.scss'
 import data from './util'
 import { useState } from "react";
+import Library from "./components/Library";
 
 
 
 function App() {
   //State
     const [songs, setSongs] = useState(data())
-    const [currentSong, setCurrentSong] = useState(songs[0])
+    const [currentSong, setCurrentSong] = useState(songs[2])
+    const [isPlaying, setIsPlaying] = useState(false)
   return (
     <div className="App">
       <Song currentSong={currentSong}/>
-      <Player currentSong={currentSong}/>
+      <Player 
+      currentSong={currentSong} 
+      isPlaying={isPlaying} 
+      setIsPlaying={setIsPlaying} 
+      />
+      <Library songs={songs}/>
     </div>
   );
 }
